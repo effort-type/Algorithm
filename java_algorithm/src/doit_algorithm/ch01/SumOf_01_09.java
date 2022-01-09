@@ -18,14 +18,34 @@ public class SumOf_01_09 {
      */
     
     static int SumOf(int a, int b) {
-        int sum = 0;
         
-        if(a < b)
-            sum = ((a + b) % 2 == 0 ? (a + b) * ((b - a) / 2) + (a + b) / 2 : (a + b) * ((b - a + 1) / 2));
-        else if(a == b)
-            sum = a;
-        else if(a > b)
-            sum = ((a + b) % 2 == 0 ? (a + b) * ((a - b) / 2) + (a + b) / 2 : (a + b) * ((a - b + 1) / 2));       
+//        // 1번 풀이
+//        int sum = 0;
+//        
+//        if(a < b)
+//            sum = ((a + b) % 2 == 0 ? (a + b) * ((b - a) / 2) + (a + b) / 2 : (a + b) * ((b - a + 1) / 2));
+//        else if(a == b)
+//            sum = a;
+//        else if(a > b)
+//            sum = ((a + b) % 2 == 0 ? (a + b) * ((a - b) / 2) + (a + b) / 2 : (a + b) * ((a - b + 1) / 2));       
+
+        // 2번 풀이
+        int min = 0; // 작은 쪽
+        int max = 0; // 큰 쪽
+        
+        if(a > b) {
+            min = b;
+            max = a;
+        }
+        else {
+            min = a;
+            max = b;
+        }
+        
+        int sum = 0;        
+        for(int i = min; i <= max; i++) {
+            sum += i;
+        }            
         
         return sum;
     }
